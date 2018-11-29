@@ -1,0 +1,20 @@
+add_action('acf/init', 'my_acf_init');
+
+function my_acf_init() {
+	
+	// check of de functie bestaat
+	if( function_exists('acf_register_block') ) {
+		
+		// Custom Testimonail block registrerend
+		acf_register_block(array(
+			'name'				=> 'testimonial',
+			'title'				=> __('Testimonial'),
+			'description'		=> __('Mijn ACF testimonial block.'),
+			'render_callback'	=> 'my_acf_block_render_callback',
+			'category'			=> 'layout', // Zie https://wordpress.org/gutenberg/handbook/block-api/
+			'icon'				=> 'admin-links', // Dashicon icon class naam
+			'keywords'			=> array( 'testimonial', 'quote' ),
+		));
+				
+	}
+}
