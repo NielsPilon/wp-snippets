@@ -1,0 +1,10 @@
+function my_acf_block_render_callback( $block ) {
+	
+	// convert name ("acf/testimonial") into path friendly slug ("testimonial")
+	$slug = str_replace('acf/', '', $block['name']);
+	
+	// template bestand vanuit de "template-parts/block" map includen
+	if( file_exists(STYLESHEETPATH . "/blocks/content-{$slug}.php") ) {
+		include( STYLESHEETPATH . "/blocks/content-{$slug}.php" );
+	}
+}
