@@ -1,0 +1,29 @@
+/**
+ * Block Name: Testimonial
+ *
+ * Het template bestand wat we gebruiken voor ons Testimonial block
+ */
+
+// afbeelding veld ophalen (array)
+$avatar = get_field('afbeelding');
+
+// id attribuut aanmaken voor specifieke styling
+$id = 'repeater-' . $block['id'];
+
+// uitlijnings class aanmaken ("alignwide") vanuit de blok instellingen ("wide")
+$align_class = $block['align'] ? 'align' . $block['align'] : '';
+
+?>
+<blockquote id="<?php echo $id; ?>" class="testimonial <?php echo $align_class; ?>">
+    <p><?php the_field('quote'); ?></p>
+    <cite>
+    	<img src="<?php echo $avatar['url']; ?>" alt="<?php echo $avatar['alt']; ?>" />
+    	<span><?php the_field('naam'); ?></span>
+    </cite>
+</blockquote>
+<style type="text/css">
+	#<?php echo $id; ?> {
+		background: <?php the_field('achtergrondkleur'); ?>;
+		color: <?php the_field('text_color'); ?>;
+	}
+</style>
